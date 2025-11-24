@@ -166,16 +166,22 @@ function setModeUI(mode){
   const m2 = mode === 'eng-to-kor';
   const m3 = mode === 'manager';
   
-  // 버튼 활성화 상태
   mode1Btn.classList.toggle('active', m1);
   mode2Btn.classList.toggle('active', m2);
   mode3Btn.classList.toggle('active', m3);
 
-  // 화면 표시 전환
   mainQuiz.style.display = m3 ? 'none' : 'block';
   wordManager.style.display = m3 ? 'block' : 'none';
 
-  // 단어 관리 모드 진입 시 리스트 업데이트
+  /* ★ 모드 바뀌면 등장 애니메이션 */
+  const shown = m3 ? wordManager : mainQuiz;
+  shown.classList.add('fade-slide-up');
+
+  // 0.45초 뒤에 클래스 제거 (다음 전환 준비)
+  setTimeout(()=>{
+    shown.classList.remove('fade-slide-up');
+  },500);
+
   if(m3) renderWordList();
 }
 
@@ -303,6 +309,7 @@ resetBtn.addEventListener('click', ()=>{
 
 /* ---------------- Rendering ---------------- */
 function renderQuestion(){
+  // 문제 종료 상태 처리
   if(!qc.active){
     if(qc.index >= qc.total && qc.total>0){
       cueLabel.textContent = '완료';
@@ -330,6 +337,20 @@ function renderQuestion(){
   }
 
   answerInput.value = '';
+
+  /* ===== 등장 애니메이션 추가 ===== */
+  cueLabel.classList.add('fade-slide-up', 'fade-delay-1');
+  cueMain.classList.add('fade-slide-up', 'fade-delay-2');
+  answerInput.classList.add('fade-slide-up', 'fade-delay-3');
+  submitBtn.classList.add('fade-slide-up', 'fade-delay-4');
+
+  // 애니메이션 클래스 제거 준비 → 다음 문제에서 다시 재생되게
+  setTimeout(() => {
+    cueLabel.classList.remove('fade-slide-up','fade-delay-1');
+    cueMain.classList.remove('fade-slide-up','fade-delay-2');
+    answerInput.classList.remove('fade-slide-up','fade-delay-3');
+    submitBtn.classList.remove('fade-slide-up','fade-delay-4');
+  }, 500);
 }
 
 /* ---------------- Submit ---------------- */
@@ -401,7 +422,18 @@ function updateStatus(){
   const pct = qc.total ? Math.round((qc.index/qc.total)*100) : 0;
   progFill.style.width = pct + '%';
 }
-
+/*=====애니메이션 함수=====*/
+function renderQuiz() {
+  const area = document.getElementById("quizArea");
+  area.innerHTML = `
+    <div class="question fade-slide-up fade-delay-1">${currentQuestion}</div>
+    <div class="answer-row fade-slide-up fade-delay-2">
+      <input id="answerInput" class="input-answer"/>
+      <button class="btn fade-slide-up fade-delay-3" onclick="submitAnswer()">확인</button>
+    </div>
+    <div id="feedback" class="feedback fade-slide-up fade-delay-4"></div>
+  `;
+}
 /* ---------------- Clear UI ---------------- */
 function clearUI(){
   cueLabel.textContent = '준비';
@@ -413,7 +445,9 @@ function clearUI(){
   progFill.style.width = '0%';
   historyBox.innerHTML = '';
 }
-
+window.onload = () => {
+  document.querySelector(".app").classList.add("fade-slide-up");
+};
 /* ---------------- Keyboard Mode Switch ---------------- */
 document.addEventListener('keydown', e=>{
   if(e.key === '1') mode1Btn.click();
