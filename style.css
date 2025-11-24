@@ -284,3 +284,23 @@ footer {
 }
 
 /* ★★★ [추가/수정된 CSS 끝] ★★★ */
+/* 아래에서 위로 등장 + 페이드인 */
+.fade-slide-up {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeSlideUp 0.45s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 약간씩 딜레이를 주기 위한 변형 */
+.fade-delay-1 { animation-delay: 0.05s; }
+.fade-delay-2 { animation-delay: 0.1s; }
+.fade-delay-3 { animation-delay: 0.15s; }
+.fade-delay-4 { animation-delay: 0.2s; }
+.fade-delay-5 { animation-delay: 0.25s; }
