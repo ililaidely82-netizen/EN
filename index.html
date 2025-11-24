@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>단어 퀴즈</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app" role="application" aria-label="영단어 퀴즈 앱">
+<header>
+  <h1>단어 퀴즈</h1>
+  <div class="mode-row" role="tablist" aria-label="퀴즈 모드 선택">
+    <button id="mode1" class="mode-btn active clickable" role="tab" aria-selected="true">뜻으로 맞추기</button>
+    <button id="mode2" class="mode-btn clickable" role="tab" aria-selected="false">스펠링으로 맞추기</button>
+    <button id="mode3" class="mode-btn clickable" role="tab" aria-selected="false">단어장 관리</button> 
+  </div>
+</header>
+
+
+    <main class="card" id="main">
+      <div class="controls">
+        <label class="small" for="count">문제 수</label>
+        <input id="count" class="input-number" type="number" min="1" max="100" value="10" aria-label="문제 수 입력" />
+        <button id="startBtn" class="btn clickable">시작</button>
+        <button id="resetBtn" class="btn clickable" style="background:transparent;color:var(--accent-2);box-shadow:none;border:1px solid rgba(0,0,0,0.06)">초기화</button>
+        <div style="margin-left:auto" class="small" aria-live="polite">
+          <span id="scoreText">정답: 0</span> · <span id="progressText">0 / 0</span>
+        </div>
+      </div>
+
+      <section class="quiz" aria-live="polite">
+        <div class="question" id="questionBox">
+          <div>
+            <div class="cue small" id="cueLabel">준비</div>
+            <div class="main" id="cueMain">시작 버튼을 눌러주세요</div>
+          </div>
+        </div>
+
+        <div class="answer-row">
+          <input id="answerInput" class="input-answer" placeholder="여기에 입력 후 제출(Enter)" aria-label="정답 입력" />
+          <button id="submitBtn" class="btn clickable">제출</button>
+        </div>
+
+        <div class="progress">
+          <div class="small" id="statusText">준비 상태</div>
+          <div class="bar" aria-hidden="true"><i id="progFill"></i></div>
+        </div>
+
+        <div class="history" id="history"></div>
+      </section>
+      <div id="remainingText" class="subinfo"></div>
+    </main>
+    
+<section class="card" id="word-manager" style="display:none;">
+    <h2>나만의 단어장 관리</h2>
+    <p class="small" style="margin-bottom:15px;">단어를 추가/수정/삭제하고 저장할 수 있습니다.</p>
+    
+    <div class="input-card"> 
+        
+        <div class="input-group">
+            <label for="newKor">한국어 뜻</label>
+            <input id="newKor" class="input-answer" placeholder="예: 관리자, 매니저 (쉼표로 구분)" />
+        </div>
+
+        <div class="input-group">
+            <label for="newEng">영어 스펠링</label>
+            <input id="newEng" class="input-answer" placeholder="예: manager (쉼표로 구분)" />
+        </div>
+
+        <button id="addWordBtn" class="btn clickable" style="width:100%">단어 추가</button>
+    </div>
+
+    <h3>현재 저장된 단어</h3>
+    <div class="history" id="wordList">
+      </div>
+    
+    <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+        <button id="saveBtn" class="btn clickable" style="width: 48%;">단어 저장 (로컬스토리지)</button>
+        <button id="exportBtn" class="btn clickable" style="width: 48%; background: var(--muted)">단어 내보내기</button>
+    </div>
+</section>
+<footer>영어 외우기</footer>
+  </div>
+<script src="script.js"></script>
+</body>
+</html>
