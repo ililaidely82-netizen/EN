@@ -434,6 +434,25 @@ function renderQuiz() {
     <div id="feedback" class="feedback fade-slide-up fade-delay-4"></div>
   `;
 }
+/*============ theme ============*/
+const themeSwitch = document.getElementById('themeSwitch');
+
+const themes = ['puple','blue','pink','green'];
+
+// 페이지 로드 시 저장된 테마 적용
+let savedTheme = localStorage.getItem('theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+themeSwitch.textContent = savedTheme.toUpperCase();
+
+// 버튼 클릭 시 순환
+themeSwitch.addEventListener('click', () => {
+  let currentIndex = themes.indexOf(document.documentElement.getAttribute('data-theme'));
+  let nextIndex = (currentIndex + 1) % themes.length;
+  let nextTheme = themes[nextIndex];
+  document.documentElement.setAttribute('data-theme', nextTheme);
+  localStorage.setItem('theme', nextTheme);
+  themeSwitch.textContent = nextTheme.toUpperCase();
+});
 /* ---------------- Clear UI ---------------- */
 function clearUI(){
   cueLabel.textContent = '준비';
