@@ -4,20 +4,6 @@ const LOCAL_STORAGE_KEY = 'wordQuizCustomData';
 
 // 초기 데이터 (기존 RAW 데이터)
 const RAW_INITIAL = `
-사진촬영술,사진술,촬영술|photography
-비행기|airplane
-관리자|manager
-촬영하다|shoot
-운동하다|work out
-기술,기량|skill
-주의 깊게,신중히|carefully
-작업실|studio
-~을 담당하다,~를 담당하다,-을 담당하다,-를 담당하다|be in charge of
-순간|moment
-물론|of course
-신호|signal
-훈련하다|train
-편집자|editor
 이야기하기|storytelling
 `;
 
