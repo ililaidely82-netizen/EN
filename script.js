@@ -448,6 +448,24 @@ function clearUI(){
 window.onload = () => {
   document.querySelector(".app").classList.add("fade-slide-up");
 };
+const app = document.querySelector(".app");
+/*=========스크롤=========*/
+function showTab(tab) {
+  document.querySelectorAll(".tab-content").forEach(t => t.style.display = "none");
+
+  if (tab === 1) {
+    document.getElementById("quiz-meaning").style.display = "block";
+    app.classList.remove("tab3-scroll");
+  }
+  else if (tab === 2) {
+    document.getElementById("quiz-spell").style.display = "block";
+    app.classList.remove("tab3-scroll");
+  }
+  else if (tab === 3) {
+    document.getElementById("word-manager").style.display = "block";
+    app.classList.add("tab3-scroll");
+  }
+}
 /* ---------------- Keyboard Mode Switch ---------------- */
 document.addEventListener('keydown', e=>{
   if(e.key === '1') mode1Btn.click();
