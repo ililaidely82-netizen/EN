@@ -17,7 +17,7 @@ const RAW_INITIAL = `
 물론|of course
 신호|signal
 훈련하다|train
-편집자|director
+편집자|editor
 이야기하기|storytelling
 `;
 
