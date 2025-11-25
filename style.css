@@ -2,6 +2,8 @@
 :root {
   --bg: #f6f4fb;
   --card-bg: #efe9f7;
+  --card-bg2:white;
+  --button:#84679d;
   --accent: #9b7fd6;
   --accent-2: #7f66b8;
   --accent-3:#39204a;
@@ -9,7 +11,9 @@
   --success: #2e9d6e;
   --danger: #d9534f;
   --darkred: #ba3b2e;
+  --h1-color:var(--accent-3);
   --glass: rgba(255,255,255,0.6);
+  --footer:gray;
   --radius: 14px;
   --pad: 14px;
   --shadow: 0 6px 18px rgba(18,12,30,0.06);
@@ -18,6 +22,69 @@
   --shadow-strong: 0 10px 28px rgba(18,12,30,0.10);
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', Arial;
 }
+/* ----- 다크 테마 ----- */
+[data-theme="dark"] {
+  --bg: #3e3e3e;
+  --card-bg: #6c6c6c;
+  --card-bg2:#4c4c4c;
+  --button:#a689be;
+  --accent: #9b7fd6;
+  --accent-2: #7f66b8;
+  --accent-3: #c1a6e8;
+  --muted: #aaa;
+  --success: #2e9d6e;
+  --danger: #ff6b6b;
+  --darkred: #ba3b2e;
+  --h1-color:#dbc8df;
+  --glass: rgba(255,255,255,0.1);
+  --footer:lightgray;
+}
+
+/* ----- 블루 테마 ----- */
+[data-theme="blue"] {
+  --bg: #e6f0ff;
+  --card-bg: #d4e0ff;
+  --button: #768fb2;
+  --accent: #3a86ff;
+  --accent-2: #1c54b2;
+  --accent-3: #0b3d91;
+  --muted: #555;
+  --success: #2e9d6e;
+  --danger: #d62828;
+  --darkred: #b11226;
+  --glass: rgba(255,255,255,0.5);
+}
+
+/* ----- 핑크 테마 ----- */
+[data-theme="pink"] {
+  --bg: #fff0f6;
+  --card-bg: #ffe6f2;
+  --button:#c69fc1;
+  --accent: #ff48b7;
+  --accent-2: #b72e84;
+  --accent-3: #7a1e5c;
+  --muted: #555;
+  --success: #2e9d6e;
+  --danger: #d62828;
+  --darkred: #b11226;
+  --glass: rgba(255,255,255,0.5);
+}
+
+/* ----- 그린 테마 ----- */
+[data-theme="green"] {
+  --bg: #f0fff0;
+  --card-bg: #e0ffe0;
+  --button:#87f087;
+  --accent: #28a745;
+  --accent-2: #1e7e34;
+  --accent-3: #155d27;
+  --muted: #555;
+  --success: #2e9d6e;
+  --danger: #d62828;
+  --darkred: #b11226;
+  --glass: rgba(255,255,255,0.5);
+}
+
 
 /* ====================== Reset + Layout ====================== */
 * { box-sizing: border-box; }
@@ -41,14 +108,14 @@ button:hover{transform:scale(0.95);border:solid 1px var(--accent-3);!important}
   max-width: var(--max-width);
   padding: 24px;
   border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.9), var(--card-bg));
+  background: linear-gradient(180deg, var(--card-bg2), var(--card-bg));
   box-shadow: var(--shadow);
 }
 /*================== Bar ====================*/
 .progress .bar {
   width: 100%;
   height: 6px;
-  background-color: #eee;
+  background-color:#eee;
   border-radius: 3px;
   overflow: hidden;
   margin-top: 4px;
@@ -76,7 +143,7 @@ h1 {
   font-size: 1.55rem;
   font-weight: 700;
   letter-spacing: 0.2px;
-  color: #32263e;
+  color: var(--h1-color);
 }
 /*스크롤*/
 .app {
@@ -272,7 +339,7 @@ h1 {
 footer {
   margin-top: 18px;
   text-align: center;
-  color: gray;
+  color: var(--footer);
   font-weight: 600;
 }
 
@@ -357,8 +424,8 @@ footer {
 }
 
 /* 약간씩 딜레이를 주기 위한 변형 */
-.fade-delay-1 { animation-delay: 0.05s; }
-.fade-delay-2 { animation-delay: 0.1s; }
-.fade-delay-3 { animation-delay: 0.15s; }
-.fade-delay-4 { animation-delay: 0.2s; }
-.fade-delay-5 { animation-delay: 0.25s; }
+.fade-delay-1 { animation-delay: 0.1s; }
+.fade-delay-2 { animation-delay: 0.2s; }
+.fade-delay-3 { animation-delay: 0.3s; }
+.fade-delay-4 { animation-delay: 0.4s; }
+.fade-delay-5 { animation-delay: 0.5s; }
