@@ -225,7 +225,7 @@ function renderWordList() {
                 <div style="font-weight:700;">${p.kor.join(', ')}</div>
                 <div class="tag">→ ${p.eng.join(', ')}</div>
             </div>
-            <button class="btn delete-btn clickable" style="background:var(--danger); padding:6px 10px;">삭제</button>
+            <button class="btn delete-btn clickable" style="background:linear-gradient(180deg, var(--danger), var(--darkred)); padding:6px 10px;">삭제</button>
         `;
         wordList.appendChild(div);
     });
