@@ -8,6 +8,7 @@
   --muted: #7a7480;
   --success: #2e9d6e;
   --danger: #d9534f;
+  --darkred: #ba3b2e;
   --glass: rgba(255,255,255,0.6);
   --radius: 14px;
   --pad: 14px;
@@ -42,6 +43,24 @@ button:hover{transform:scale(0.95);border:solid 1px var(--accent-3);!important}
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255,255,255,0.9), var(--card-bg));
   box-shadow: var(--shadow);
+}
+/*================== Bar ====================*/
+.progress .bar {
+  width: 100%;
+  height: 6px;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress .bar i {
+  display: block; /* 인라인 → 블록 */
+  height: 100%;
+  width: 0%;      /* 초기 상태 */
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 3px;
+  transition: width 0.3s ease; /* 부드러운 진행 */
 }
 /* ====================== Header ====================== */
 header {
@@ -187,7 +206,6 @@ h1 {
   transform: translateY(2px) scale(0.995);
   box-shadow: none;
 }
-
 /* Any pressable effect */
 .clickable {
   transition: transform 120ms ease, box-shadow 120ms ease;
@@ -339,8 +357,8 @@ footer {
 }
 
 /* 약간씩 딜레이를 주기 위한 변형 */
-.fade-delay-1 { animation-delay: 0.1s; }
-.fade-delay-2 { animation-delay: 0.2s; }
-.fade-delay-3 { animation-delay: 0.3s; }
-.fade-delay-4 { animation-delay: 0.4s; }
-.fade-delay-5 { animation-delay: 0.5s; }
+.fade-delay-1 { animation-delay: 0.05s; }
+.fade-delay-2 { animation-delay: 0.1s; }
+.fade-delay-3 { animation-delay: 0.15s; }
+.fade-delay-4 { animation-delay: 0.2s; }
+.fade-delay-5 { animation-delay: 0.25s; }
